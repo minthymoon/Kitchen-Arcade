@@ -1,0 +1,128 @@
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;              
+  background-color: #F5DEB3;
+  display: flex;
+  flex-direction: column;      
+  align-items: center;         
+  justify-content: center; 
+  font-family: Arial, sans-serif;
+  text-align: center;         
+}
+
+
+#count-container {
+  margin-top: 20px;
+  /* text-align: center; */
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px; 
+}
+
+
+#potato {
+display: block;
+  margin: 20px auto;
+  max-width: 500px;
+  min-width: 220px;
+  width: 80%;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -moz-user-select: none;
+  transition: transform 0.01s ease-in-out;
+  touch-action: manipulation; 
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+}
+
+
+#clear-btn {
+  margin-top: 20px;
+  padding: 10px 25px;
+  background-color: #E6C79C;  
+  border: none;
+  border-radius: 12px;         
+  font-family: 'Comic Neue', cursive, sans-serif;  
+  font-size: 4em;
+  color: #8B4513;              
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.2);  
+  transition: background-color 0.2s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+}
+
+#clear-btn:hover {
+   background-color: #DAB68A;    
+  transform: scale(1.05);       
+}
+
+#clear-btn:focus{
+  outline: none;
+}
+
+#count-label {
+  font-family: 'Comic Neue', cursive, sans-serif; 
+  color: #A0522D;  
+  font-size: 3em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #FFDAB9; 
+}
+#count {
+  font-family: 'Arial Black', Gadget, sans-serif; 
+  color: #8B4513;  
+  font-size: 2.3em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px #FFE4B5; 
+  margin-bottom: 0;
+  user-select: none;
+}
+
+#potato.clicked {
+  transform: scale(1.15);  
+  transition: transform 0.15s cubic-bezier(.68,-0.55,.27,1.55); 
+}
+@media (max-width: 600px) {
+  body {
+   display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    box-sizing: border-box;
+  }
+
+  #potato {
+    max-width: 350px;    
+    min-width: 150px;
+    margin: 20px 0;
+    user-select: none;         
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    cursor: pointer;
+    transition: transform 0.01s ease-in-out;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+  }
+
+  /* #count {
+    font-size: 4em;     
+  } */
+
+  #clear-btn {
+    font-size: 2.5em;
+    padding: 10px 20px;
+  }
+}
