@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap');
+
+:root {
+  --wheat: #F5DEB3;
+  --wheat-deep: #EAD1A0;
+  --wood: #A0632B;
+  --wood-dark: #7A4A20;
+  --wood-shadow: #5C3818;
+  --text-brown: #5C3A21;
+  --text-brown-deep: #4A2E1A;
+  --accent: #C1440E;
+  --accent-deep: #A03A0C;
+  --jar-glass: #FFF8E7;
+  --peach: #FFDAB9;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at top, var(--wheat-deep) 0%, var(--wheat) 55%);
+  font-family: 'Nunito', sans-serif;
+  color: var(--text-brown);
+  overflow-x: hidden;
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  text-align: center;
+  padding: 56px 20px 30px;
+}
+
+.hero-eyebrow {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85em;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.hero h1 {
+  font-family: 'Comic Neue', cursive;
+  font-size: 3.4em;
+  font-weight: 700;
+  margin: 0;
+  color: var(--text-brown-deep);
+  text-shadow: 2px 2px 0 var(--peach);
+}
+
+.hero p {
+  font-size: 1.15em;
+  max-width: 480px;
+  margin: 14px auto 0;
+  color: var(--text-brown);
+  opacity: 0.85;
+}
+
+/* ---------- Pantry shelves ---------- */
+
+.pantry {
+  max-width: 980px;
+  margin: 20px auto 60px;
+  padding: 0 24px;
+}
+
+.shelf-row {
+  position: relative;
+  margin-bottom: 78px;
+}
+
+.shelf-items {
+  display: flex;
+  gap: 34px;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  padding-bottom: 22px;
+  position: relative;
+  z-index: 2;
+}
+
+/* the wooden plank each row sits on */
+.shelf-plank {
+  height: 22px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--wood) 0px,
+    var(--wood) 3px,
+    var(--wood-dark) 4px,
+    var(--wood) 6px
+  );
+  box-shadow:
+    0 6px 0 var(--wood-shadow),
+    0 14px 18px rgba(74, 46, 26, 0.35);
+  position: relative;
+}
+
+.shelf-plank::before {
+  content: '';
+  position: absolute;
+  top: -6px;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--wood);
+  border-radius: 4px 4px 0 0;
+  opacity: 0.6;
+}
+
+/* ---------- Jar cards ---------- */
+
+.jar-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.jar {
+  width: 168px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.18s ease;
+}
+
+.jar-link:hover .jar,
+.jar-link:focus-visible .jar {
+  transform: translateY(-8px);
+}
+
+.jar-lid {
+  width: 58px;
+  height: 16px;
+  background: var(--wood-dark);
+  border-radius: 6px 6px 3px 3px;
+  box-shadow: 0 2px 0 var(--wood-shadow);
+  margin-bottom: -2px;
+  z-index: 1;
+}
+
+.jar-shape {
+  position: relative;
+  width: 140px;
+  height: 171px;
+}
+
+.jar-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  filter: drop-shadow(2px 4px 6px rgba(74, 46, 26, 0.25));
+}
+
+.jar-svg-fill {
+  fill: var(--jar-glass);
+  stroke: var(--wood-dark);
+  stroke-width: 3;
+}
+
+.jar.locked .jar-svg-fill {
+  fill: #EDE1C9;
+}
+
+.jar-content {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding-top: 22px; /* offsets the neck so icon/name sit in the body */
+}
+
+.jar-icon {
+  font-size: 2.4em;
+  line-height: 1;
+}
+
+.jar-name {
+  font-family: 'Comic Neue', cursive;
+  font-weight: 700;
+  font-size: 1.05em;
+  color: var(--text-brown-deep);
+  text-align: center;
+  padding: 0 8px;
+}
+
+.jar-label {
+  margin-top: 10px;
+  font-size: 0.82em;
+  font-weight: 700;
+  color: var(--text-brown);
+  text-align: center;
+}
+
+.jar.locked .jar-body {
+  background: linear-gradient(180deg, #EDE1C9 0%, #E4D5B4 100%);
+  opacity: 0.75;
+}
+
+.jar.locked .jar-icon {
+  filter: grayscale(0.4);
+  opacity: 0.6;
+}
+
+.jar.locked .jar-label {
+  color: var(--accent-deep);
+  opacity: 0.85;
+}
+
+.jar-link.disabled {
+  cursor: default;
+}
+
+.jar-link.disabled .jar:hover,
+.jar-link.disabled .jar:focus-visible {
+  transform: none;
+}
+
+/* ---------- Footer ---------- */
+
+.pantry-footer {
+  text-align: center;
+  padding-bottom: 40px;
+  font-size: 0.9em;
+  color: var(--text-brown);
+  opacity: 0.6;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.4em;
+  }
+  .shelf-items {
+    gap: 20px;
+  }
+  .jar {
+    width: 130px;
+  }
+  .jar-icon {
+    font-size: 1.9em;
+  }
+  .jar-name {
+    font-size: 0.9em;
+  }
+  .jar-lid {
+    width: 46px;
+  }
+  .jar-shape {
+    width: 108px;
+    height: 132px;
+  }
+}
