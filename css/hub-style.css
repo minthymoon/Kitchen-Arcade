@@ -87,7 +87,6 @@ body {
   z-index: 2;
 }
 
-/* the wooden plank each row sits on */
 .shelf-plank {
   height: 22px;
   border-radius: 4px;
@@ -179,7 +178,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 6px;
-  padding-top: 22px; /* offsets the neck so icon/name sit in the body */
+  padding-top: 22px;
 }
 
 .jar-icon {
