@@ -1,0 +1,12 @@
+.bg-wood-dark {
+  background-color: var(--rustic-wood-darkest);
+  background-image:
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(111, 157, 116, 0.08), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 85% 10%, rgba(201, 165, 74, 0.05), transparent 60%),
+    repeating-linear-gradient(95deg, rgba(0, 0, 0, 0.2) 0px, transparent 2px, transparent 34px, rgba(0, 0, 0, 0.15) 36px),
+    repeating-linear-gradient(95deg, rgba(255, 255, 255, 0.02) 0px, rgba(255, 255, 255, 0.02) 1px, transparent 1px, transparent 4px),
+    linear-gradient(180deg, var(--rustic-wood-dark) 0%, var(--rustic-wood-darkest) 45%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}

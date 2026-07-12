@@ -4,11 +4,13 @@
   <meta charset="UTF-8">
   <title>Potato Clicker</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-wood-dark">
+
+   <div id="site-navbar" data-home="../" data-title="Potato Clicker"></div>
+
+<main class="game-wrapper">
+ 
  
   <div id="count-container">
     <span id="count-label">Clicks:</span> <span id="count">0</span>
@@ -18,9 +20,10 @@
   <img id="potato" src="assets/potato1.png" alt="Potato">
 
 
-  <button id="clear-btn">Clear</button>
-
+  <button id="clear-btn" class="btn btn-primary">Clear</button>
+</main>
 
   <script src="js/app.js"></script>
+  <script src="../common/js/navbar.js" defer></script>
 </body>
 </html>

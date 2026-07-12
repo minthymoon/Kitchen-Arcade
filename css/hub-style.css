@@ -1,33 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Nunito:wght@400;600;700&display=swap');
-
-:root {
-  --wheat: #F5DEB3;
-  --wheat-deep: #EAD1A0;
-  --wood: #A0632B;
-  --wood-dark: #7A4A20;
-  --wood-shadow: #5C3818;
-  --text-brown: #5C3A21;
-  --text-brown-deep: #4A2E1A;
-  --accent: #C1440E;
-  --accent-deep: #A03A0C;
-  --jar-glass: #FFF8E7;
-  --peach: #FFDAB9;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background:
-    radial-gradient(ellipse at top, var(--wheat-deep) 0%, var(--wheat) 55%);
-  font-family: 'Nunito', sans-serif;
-  color: var(--text-brown);
-  overflow-x: hidden;
-}
+@import url('../common/css/variables.css');
+@import url('../common/css/base.css');
+@import url('../common/css/navbar.css');
+@import url('../common/css/backgrounds.css');
 
 /* ---------- Hero ---------- */
 
@@ -41,9 +15,17 @@ body {
   font-size: 0.85em;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--rustic-olive);
   font-weight: 700;
   margin-bottom: 10px;
+}
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: "❧";
+  color: var(--rustic-gold);
+  margin: 0 8px;
+  opacity: 0.8;
 }
 
 .hero h1 {
@@ -51,16 +33,16 @@ body {
   font-size: 3.4em;
   font-weight: 700;
   margin: 0;
-  color: var(--text-brown-deep);
-  text-shadow: 2px 2px 0 var(--peach);
+  color: var(--rustic-cream);
+  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.35);
 }
 
 .hero p {
   font-size: 1.15em;
   max-width: 480px;
   margin: 14px auto 0;
-  color: var(--text-brown);
-  opacity: 0.85;
+  color: var(--rustic-cream);
+  opacity: 0.8;
 }
 
 /* ---------- Pantry shelves ---------- */
@@ -92,14 +74,14 @@ body {
   border-radius: 4px;
   background: repeating-linear-gradient(
     90deg,
-    var(--wood) 0px,
-    var(--wood) 3px,
-    var(--wood-dark) 4px,
-    var(--wood) 6px
+    var(--rustic-wood) 0px,
+    var(--rustic-wood) 3px,
+    var(--rustic-wood-dark) 4px,
+    var(--rustic-wood) 6px
   );
   box-shadow:
-    0 6px 0 var(--wood-shadow),
-    0 14px 18px rgba(74, 46, 26, 0.35);
+    0 6px 0 var(--rustic-wood-darkest),
+    0 14px 18px rgba(0, 0, 0, 0.45);
   position: relative;
 }
 
@@ -110,7 +92,7 @@ body {
   left: 0;
   right: 0;
   height: 6px;
-  background: var(--wood);
+  background: var(--rustic-sage-dark);
   border-radius: 4px 4px 0 0;
   opacity: 0.6;
 }
@@ -138,36 +120,41 @@ body {
 }
 
 .jar-lid {
-  width: 58px;
+  width: 110px;
   height: 16px;
-  background: var(--wood-dark);
+  background: var(--rustic-sage-dark);
   border-radius: 6px 6px 3px 3px;
-  box-shadow: 0 2px 0 var(--wood-shadow);
+  box-shadow: 0 2px 0 var(--rustic-wood-darkest);
   margin-bottom: -2px;
   z-index: 1;
+}
+
+.jar.locked .jar-lid {
+  background: var(--rustic-sage);
+  opacity: 0.6;
 }
 
 .jar-shape {
   position: relative;
   width: 140px;
-  height: 171px;
+  height: 140px;
 }
 
 .jar-svg {
   width: 100%;
   height: 100%;
   display: block;
-  filter: drop-shadow(2px 4px 6px rgba(74, 46, 26, 0.25));
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.45));
 }
 
 .jar-svg-fill {
-  fill: var(--jar-glass);
-  stroke: var(--wood-dark);
+  fill: var(--rustic-cream);
+  stroke: var(--rustic-wood-dark);
   stroke-width: 3;
 }
 
 .jar.locked .jar-svg-fill {
-  fill: #EDE1C9;
+  fill: var(--rustic-terracotta-muted);
 }
 
 .jar-content {
@@ -190,7 +177,7 @@ body {
   font-family: 'Comic Neue', cursive;
   font-weight: 700;
   font-size: 1.05em;
-  color: var(--text-brown-deep);
+  color: var(--rustic-wood-dark);
   text-align: center;
   padding: 0 8px;
 }
@@ -199,22 +186,33 @@ body {
   margin-top: 10px;
   font-size: 0.82em;
   font-weight: 700;
-  color: var(--text-brown);
+  color: var(--rustic-cream);
   text-align: center;
-}
-
-.jar.locked .jar-body {
-  background: linear-gradient(180deg, #EDE1C9 0%, #E4D5B4 100%);
-  opacity: 0.75;
 }
 
 .jar.locked .jar-icon {
   filter: grayscale(0.4);
   opacity: 0.6;
+  visibility: hidden;
+}
+
+.jar.locked .jar-name {
+  visibility: hidden;
+}
+
+.jar.locked .jar-content::before {
+  content: "🕸️";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.6em;
+  filter: grayscale(1) brightness(0.3);
 }
 
 .jar.locked .jar-label {
-  color: var(--accent-deep);
+  color: var(--rustic-olive);
   opacity: 0.85;
 }
 
@@ -233,8 +231,8 @@ body {
   text-align: center;
   padding-bottom: 40px;
   font-size: 0.9em;
-  color: var(--text-brown);
-  opacity: 0.6;
+  color: var(--rustic-cream);
+  opacity: 0.5;
 }
 
 /* ---------- Responsive ---------- */
@@ -243,23 +241,44 @@ body {
   .hero h1 {
     font-size: 2.4em;
   }
-  .shelf-items {
-    gap: 20px;
+
+  .pantry {
+    padding: 0 12px;
   }
+
+  .shelf-row {
+    margin-bottom: 56px;
+  }
+
+  .shelf-items {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    gap: 14px 8px;
+    padding-bottom: 18px;
+  }
+
+  .shelf-plank {
+    margin: 0;
+  }
+
   .jar {
-    width: 130px;
+    width: 100%;
+    max-width: 104px;
   }
   .jar-icon {
-    font-size: 1.9em;
+    font-size: 1.4em;
   }
   .jar-name {
-    font-size: 0.9em;
+    font-size: 0.61em;
+    padding: 0 4px;
   }
   .jar-lid {
-    width: 46px;
+    width: 62px;
+    height: 12px;
   }
   .jar-shape {
-    width: 108px;
-    height: 132px;
+    width: 72px;
+    height: 78px;
   }
 }

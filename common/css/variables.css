@@ -1,0 +1,51 @@
+/*:root {
+  --wheat: #F5DEB3;
+  --wheat-deep: #EAD1A0;
+  --wood: #A0632B;
+  --wood-dark: #7A4A20;
+  --wood-shadow: #5C3818;
+  --text-brown: #5C3A21;
+  --text-brown-deep: #4A2E1A;
+  --accent: #C1440E;
+  --accent-deep: #A03A0C;
+  --jar-glass: #FFF8E7;
+  --peach: #FFDAB9;
+
+  --rustic-terracotta: #E8C39E;
+  --rustic-terracotta-deep: #C9A063;
+  --rustic-terracotta-muted: #D9C7AE;
+  --rustic-wood: #8B5E34;
+  --rustic-wood-dark: #5B3A21;
+  --rustic-wood-darkest: #2A1B10;
+  --rustic-olive: #94A873;
+  --rustic-olive-deep: #5F7043;
+  --rustic-cream: #FBEFE3;
+}
+  */
+:root {
+  --wheat: #F5DEB3;
+  --wheat-deep: #EAD1A0;
+  --wood: #6b4326;
+  --wood-dark: #43290f;
+  --wood-shadow: #241407;
+  --text-brown: #5C3A21;
+  --text-brown-deep: #4A2E1A;
+  --accent: #C1440E;
+  --accent-deep: #A03A0C;
+  --jar-glass: #FFF8E7;
+  --peach: #8fbf95;
+
+  --rustic-terracotta: #E8C39E;
+  --rustic-terracotta-deep: #C9A063;
+  --rustic-terracotta-muted: #D9C7AE;
+  --rustic-wood: #6b4326;
+  --rustic-wood-dark: #43290f;
+  --rustic-wood-darkest: #1c1006;
+  --rustic-olive: #7fa583;
+  --rustic-olive-deep: #4c7a52;
+  --rustic-cream: #FBEFE3;
+
+  --rustic-sage: #6f9d74;
+  --rustic-sage-dark: #3f6b45;
+  --rustic-gold: #c9a54a;
+}

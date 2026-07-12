@@ -1,0 +1,29 @@
+.btn {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 25px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.2s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  user-select: none;
+}
+
+.btn:hover,
+.btn:focus-visible {
+  transform: scale(1.05);
+}
+
+.btn-primary {
+  background-color: var(--wood);
+  color: var(--jar-glass);
+}
+
+.btn-primary:hover,
+.btn-primary:focus-visible {
+  background-color: var(--wood-dark);
+}
