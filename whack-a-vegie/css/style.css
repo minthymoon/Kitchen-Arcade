@@ -1,0 +1,413 @@
+@import url('../../common/css/variables.css');
+@import url('../../common/css/base.css');
+@import url('../../common/css/navbar.css');
+@import url('../../common/css/buttons.css');
+@import url('../../common/css/backgrounds.css');
+
+body {
+  text-align: center;
+}
+
+.game-wrapper {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------- Stats row (score / time) ---------- */
+
+#stats-container {
+  display: flex;
+  gap: 34px;
+  margin-bottom: 24px;
+}
+
+.stat-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.stat-label {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  color: var(--rustic-cream);
+  font-size: 1.3em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px var(--peach);
+}
+
+.stat-value {
+  font-family: 'Arial Black', Gadget, sans-serif;
+  color: var(--rustic-gold);
+  font-size: 2em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px var(--peach);
+  user-select: none;
+}
+
+/* ---------- The plot / holes ---------- */
+
+#plot {
+  width: 90%;
+  max-width: 460px;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  padding: 22px;
+  background: var(--rustic-wood-dark);
+  border: 3px solid var(--rustic-wood-darkest);
+  border-radius: 16px;
+  box-shadow: inset 0 4px 14px rgba(0, 0, 0, 0.45), 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hole {
+  position: relative;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, #2a1c12 0%, #1a1109 70%);
+  box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.6), 0 3px 0 rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.hole-veggie {
+  position: absolute;
+  left: 50%;
+  bottom: -60%;
+  transform: translateX(-50%);
+  font-size: 3.1em;
+  line-height: 1;
+  transition: bottom 0.12s ease-out;
+  user-select: none;
+  pointer-events: none;
+}
+
+.hole.up .hole-veggie {
+  bottom: 4%;
+}
+
+.hole.whacked .hole-veggie {
+  animation: squish 0.22s ease-out forwards;
+}
+
+@keyframes squish {
+  0%   { transform: translateX(-50%) scale(1); }
+  40%  { transform: translateX(-50%) scale(1.15, 0.7); }
+  100% { transform: translateX(-50%) scale(0.2); opacity: 0; }
+}
+
+/* ---------- Start / restart buttons ---------- */
+
+#start-btn,
+#close-end-btn,
+#stop-btn {
+  margin-top: 24px;
+  background-color: var(--rustic-sage-dark);
+  color: var(--rustic-cream);
+}
+
+#start-btn:hover,
+#start-btn:focus-visible,
+#close-end-btn:hover,
+#close-end-btn:focus-visible {
+  background-color: var(--rustic-sage);
+}
+
+/* ---------- Best sign (matches potato-clicker) ---------- */
+
+#best-sign {
+  position: fixed;
+  top: 64px;
+  right: 28px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.sign-rope {
+  width: 3px;
+  height: 20px;
+  background: var(--rustic-wood-dark);
+}
+
+.sign-board {
+  margin-top: -1px;
+  background: var(--rustic-wood);
+  border: 3px solid var(--rustic-wood-dark);
+  border-radius: 4px;
+  padding: 10px 24px;
+  transform: rotate(3deg);
+  box-shadow: -3px 6px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  position: relative;
+}
+
+.sign-board::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rustic-wood-darkest);
+}
+
+.sign-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rustic-sage);
+  font-weight: 700;
+}
+
+#best-score {
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--rustic-gold);
+}
+
+/* ---------- End-of-round overlay ---------- */
+
+#end-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#end-overlay[hidden] {
+  display: none;
+}
+
+.end-card {
+  background: var(--rustic-wood);
+  border: 3px solid var(--rustic-wood-darkest);
+  border-radius: 14px;
+  padding: 32px 40px;
+  text-align: center;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.end-card h2 {
+  font-family: 'Comic Neue', cursive;
+  color: var(--rustic-cream);
+  margin: 0 0 10px;
+}
+
+.end-card p {
+  color: var(--rustic-cream);
+  opacity: 0.85;
+  margin: 0 0 20px;
+}
+
+/* ---------- Speed / time option buttons (shared look) ---------- */
+
+.option-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.option-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85em;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--rustic-olive);
+  font-weight: 700;
+}
+
+.option-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.option-buttons.vertical {
+  flex-direction: column;
+}
+
+.option-btn {
+  font-family: 'Comic Neue', cursive, sans-serif;
+  font-weight: 700;
+  font-size: 0.95em;
+  border: 2px solid var(--rustic-wood-dark);
+  background: transparent;
+  color: var(--rustic-cream);
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.option-btn:hover:not(:disabled) {
+  transform: scale(1.05);
+}
+
+.option-btn.selected {
+  background: var(--rustic-sage-dark);
+  border-color: var(--rustic-sage-dark);
+}
+
+.option-btn:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
+/* ---------- Desktop: signs flanking the plot ---------- */
+
+
+#left-signs {
+  position: fixed;
+  top: 64px;
+  left: 28px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.side-sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+/* ---------- Mobile: hamburger + overlay ---------- */
+
+#menu-toggle-btn {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4px;
+  width: 38px;
+  height: 34px;
+  background: var(--rustic-wood-dark);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 0;
+  position: fixed;
+  top: 70px;
+  left: 16px;
+  z-index: 90;
+}
+
+#menu-toggle-btn span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background: var(--rustic-cream);
+  margin: 0 auto;
+}
+
+#mobile-options-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 110;
+}
+
+#mobile-options-overlay[hidden] {
+  display: none;
+}
+
+.overlay-panel {
+  position: relative;
+  background: var(--rustic-wood);
+  border: 3px solid var(--rustic-wood-darkest);
+  border-radius: 14px;
+  padding: 32px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+#close-menu-btn {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: none;
+  border: none;
+  color: var(--rustic-cream);
+  font-size: 1.6em;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+
+  #stats-container {
+    gap: 22px;
+    margin-bottom: 16px;
+  }
+
+  .stat-label {
+    font-size: 1.05em;
+  }
+
+  .stat-value {
+    font-size: 1.6em;
+  }
+
+ #plot {
+    gap: 12px;
+    padding: 18px;
+    width: 88%;
+    max-width: 480px;
+  }
+
+  .hole-veggie {
+    font-size: 2.6em;
+  }
+
+  #best-sign {
+    top: 54px;
+    right: 16px;
+  }
+  .sign-rope {
+    height: 14px;
+  }
+  .sign-board {
+    padding: 7px 16px;
+  }
+  .sign-label {
+    font-size: 0.72em;
+  }
+  #best-score {
+    font-size: 1.1em;
+  }
+  #stop-btn {
+    margin-top: 34px;
+  }
+  #left-signs {
+  display: none;
+}
+  #menu-toggle-btn {
+    display: flex;
+  }
+  .game-area {
+    gap: 0;
+  }
+}

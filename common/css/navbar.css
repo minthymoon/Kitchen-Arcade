@@ -11,6 +11,10 @@
   top: 0;
   z-index: 100;
 }
+#site-navbar {
+  width: 100%;
+  align-self: stretch;
+}
 
 .site-navbar-logo {
   font-family: 'Comic Neue', cursive;

@@ -79,17 +79,70 @@ display: block;
   transform: scale(1.15);  
   transition: transform 0.15s cubic-bezier(.68,-0.55,.27,1.55); 
 }
+
+
+/* --------------------best sign----------------------*/
+
+#best-sign {
+  position: fixed;
+  top: 64px;
+  right: 28px;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+}
+
+.sign-rope {
+  width: 3px;
+  height: 20px;
+  background: var(--rustic-wood-dark);
+}
+
+.sign-board {
+  margin-top: -1px;
+  background: var(--rustic-wood);
+  border: 3px solid var(--rustic-wood-dark);
+  border-radius: 4px;
+  padding: 10px 24px;
+  transform: rotate(3deg);
+  box-shadow: -3px 6px 8px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: baseline;
+  gap: 9px;
+  position: relative;
+}
+
+.sign-board::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--rustic-wood-darkest);
+}
+
+.sign-label {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rustic-sage);
+  font-weight: 700;
+}
+
+#best-count {
+  font-family: 'Comic Neue', cursive;
+  font-size: 1.4em;
+  font-weight: 700;
+  color: var(--rustic-gold);
+}
+
 @media (max-width: 600px) {
-  body {
-   display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    margin: 0;
-    padding: 20px;
-    box-sizing: border-box;
-  }
 
   #potato {
     max-width: 350px;    
@@ -109,5 +162,19 @@ display: block;
   /* #count {
     font-size: 4em;     
   } */
+
+#best-sign {
+    top: 52px;
+    left: 16px;
+  }
+  .sign-board {
+    padding: 5px 12px;
+  }
+  .sign-label {
+    font-size: 0.62em;
+  }
+  #best-count {
+    font-size: 0.95em;
+  }
 
 }

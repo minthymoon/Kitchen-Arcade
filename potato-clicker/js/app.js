@@ -2,6 +2,10 @@ const potato = document.getElementById('potato');
 const countDisplay = document.getElementById('count');
 const clearBtn = document.getElementById('clear-btn');
 
+const bestDisplay = document.getElementById('best-count');
+let best = parseInt(localStorage.getItem('bestCount')) || 0;
+bestDisplay.textContent = best;
+
 const potato1 = new Image();
 potato1.src = './assets/potato1.png';
 const potato2 = new Image();
@@ -34,6 +38,14 @@ potato.addEventListener('click', () => {
 
 
   localStorage.setItem('count', count);
+
+
+   
+  if (count > best) {
+    best = count;
+    bestDisplay.textContent = best;
+    localStorage.setItem('bestCount', best);
+  }
 
  
   setTimeout(() => {

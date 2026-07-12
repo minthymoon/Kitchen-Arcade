@@ -116,7 +116,7 @@
 
 .jar-link:hover .jar,
 .jar-link:focus-visible .jar {
-  transform: translateY(-8px);
+  transform: translateY(-8px) rotate(-2deg);
 }
 
 .jar-lid {
