@@ -356,6 +356,19 @@ body {
   line-height: 1;
 }
 
+/*_--------------------------------new best--------------------------------------*/
+
+#best-sign.new-best .sign-board{
+  animation: best-pop 0.5s ease-out;
+  background: var(--rustic-gold);
+  border-color: var(--rustic-wood-darkest);
+  transition: background-color 0.3s;
+}
+
+#best-sign.new-best #best-score{
+  color: var(--rustic-wood-darkest);
+}
+
 @media (max-width: 600px) {
 
   #stats-container {
@@ -411,3 +424,11 @@ body {
     gap: 0;
   }
 }
+
+@keyframes best-pop {
+  0%{transform: scale(1);}
+  30%{transform: scale(1.25);}
+  55%{transform: scale(0.95);}
+  100%{transform: scale(1);}
+}
+

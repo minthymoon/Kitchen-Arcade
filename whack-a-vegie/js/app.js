@@ -141,6 +141,10 @@ function endGame() {
     best = score;
     bestDisplay.textContent = best;
     localStorage.setItem('whackBest', best);
+
+    const bestSign = document.getElementById('best-sign');
+    bestSign.classList.add('new-best');
+    setTimeout(() => bestSign.classList.remove('new-best'), 900);
   }
 
   finalScoreDisplay.textContent = score;
